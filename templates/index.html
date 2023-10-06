@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Real-time string</title>
+    <script>
+      function updateRealtime() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/realtime");
+        xhr.onreadystatechange = function() {
+          if (this.readyState === 4 && this.status === 200) {
+            document.getElementById("realtime").innerHTML = this.responseText;
+          }
+        };
+        xhr.send();
+      }
+      setInterval(updateRealtime, 1000); // Update every second
+    </script>
+  </head>
+  <body>
+    <div id="realtime"></div>
+  </body>
+</html>
